@@ -1,0 +1,43 @@
+.search-bar {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar button {
+  margin-left: 5px;
+}
+
+.row {
+  margin-top: 30px;
+}
+
+.card {
+  height: 350px;
+  margin: 5px;
+  box-shadow: 1px;
+  text-align: center;
+}
+
+.card-body {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-body a {
+  position: absolute;
+  margin: 10px;
+  bottom: 0;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.pagination-container button {
+  margin: 5px;
+}
