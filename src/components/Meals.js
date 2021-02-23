@@ -65,9 +65,10 @@ function Meals(props) {
       </div>
 
       <div className="row align-items-center">
+        {/* <div className="col"> */}
         {mealList.map((meal, index) => {
           return (
-            <div className="col-sm-2">
+            <div className="col">
               <div className="card" key={index}>
                 <img src={meal.image} className="card-img-top" alt="..." />
                 <div className="card-body">
