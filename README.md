@@ -8,7 +8,7 @@ Project management tool : NPM<br/>
 
 # Screenshots
 
-![alt text](public/homepage.jpg?raw=true)<br/><br/>
+![alt text](public/homepage.png?raw=true)<br/><br/>
 
 ![alt text](public/mealdetails.png?raw=true)<br/><br/>
 
