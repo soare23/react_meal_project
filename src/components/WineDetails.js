@@ -35,12 +35,18 @@ function WineDetails(props) {
     <>
       <div className="container">
         <div className="row">
+          <div className="title-container">
+            <h3>{wineName.toUpperCase()}</h3>
+          </div>
           <div className="col">
-            <div>Description : {wineDetails}</div>
+            <div className="description-container">
+              Description : {wineDetails}
+            </div>
           </div>
           <div className="col">
             <div>
-              <div>
+              <h3>Goes well with:</h3>
+              <div className="meal-pairing-container">
                 {wineError.length < 2
                   ? wineFoodPairing.map((food, index) => {
                       return (

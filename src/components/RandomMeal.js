@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../styling/RandomMeal.css';
 
 import { properties } from '../properties';
 
@@ -18,15 +19,16 @@ function Random(props) {
 
   return (
     <>
-      <h3>{randomMeal.title}</h3>
-
-      <div className="container">
+      <div className="title-container">
+        <h3>{randomMeal.title}</h3>
+      </div>
+      <div className="containe random-meal-container">
         <div className="row">
-          <div className="col">
-            <div dangerouslySetInnerHTML={{ __html: randomMeal.summary }} />
-          </div>
-          <div className="col">
+          <div className="col image-container">
             <img src={randomMeal.image} alt="" />
+          </div>
+          <div className="col text-container">
+            <div dangerouslySetInnerHTML={{ __html: randomMeal.summary }} />
           </div>
         </div>
       </div>

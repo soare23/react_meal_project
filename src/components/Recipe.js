@@ -2,20 +2,18 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { properties } from '../properties';
 
-function Recipe(props) {
-  let id = props.match.params.id;
-
+function Recipe({ mealId }) {
   const [recipe, setRecipe] = useState([]);
 
   useEffect(() => {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=${properties.forthKey}&includeNutrition=false`
+        `https://api.spoonacular.com/recipes/${mealId}/information?apiKey=${properties.forthKey}&includeNutrition=false`
       )
       .then((response) => {
         setRecipe(response.data.extendedIngredients);
       });
-  }, [id]);
+  }, [mealId]);
 
   return (
     <>

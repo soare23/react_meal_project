@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../styling/Wine.css';
 
 function Wine(props) {
   const whiteWine = [
@@ -116,7 +117,10 @@ function Wine(props) {
   return (
     <>
       <div>
-        <div className="pagination justify-content-center">
+        <div
+          className="pagination justify-content-center"
+          style={{ margin: '50px' }}
+        >
           <div className="btn-group" role="group" aria-label="Basic example">
             <button
               type="button"
@@ -142,26 +146,13 @@ function Wine(props) {
           </div>
         </div>
 
-        <div className="container">
+        <div className="container wine-container">
           <div className="row">
             {wineList.map((wine, index) => {
               return (
                 <div className="col-6">
                   <Link to={`/wine/${wine}`}>
-                    <h4
-                      id={index}
-                      onMouseOver={() => {
-                        document.getElementById(index).style.color = '#fff';
-                        document.getElementById(index).style.backgroundColor =
-                          '#289341';
-                      }}
-                      onMouseOut={() => {
-                        document.getElementById(index).style.color = '#0a043c';
-                        document.getElementById(index).style.backgroundColor =
-                          'initial';
-                      }}
-                      key={index}
-                    >
+                    <h4 key={index}>
                       {wine.replace('_', ' ').charAt(0).toUpperCase() +
                         wine.replace('_', ' ').slice(1)}
                     </h4>
