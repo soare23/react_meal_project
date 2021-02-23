@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { properties } from '../properties';
 import Modal from 'react-modal';
+import Recipe from './Recipe';
 import Nutrition from './Nutrition';
+import '../styling/MealDetails.css';
 
 function MealDetails(props) {
   let id = props.match.params.id;
@@ -11,6 +12,8 @@ function MealDetails(props) {
   const [mealSummary, setMealSummary] = useState({});
   const [mealIngredients, setMealIngredients] = useState([]);
   const [mealPicture, setMealPicture] = useState('');
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [isRecipe, setIsRecipe] = useState(false);
 
   const modalStyle = {
     content: {
@@ -49,33 +52,41 @@ function MealDetails(props) {
       });
   }, [id]);
 
-  let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    subtitle.style.color = '#070101';
   }
 
   function closeModal() {
     setIsOpen(false);
   }
 
+  function openRecipeModal() {
+    openModal();
+    setIsRecipe(true);
+  }
+
+  function openNutritionModal() {
+    openModal();
+    setIsRecipe(false);
+  }
+
   return (
     <>
-      <h3>{mealSummary.title}</h3>
+      <div className="title-container">
+        <h3>{mealSummary.title}</h3>
+      </div>
       <br />
 
-      <div>
-        <Link to={`${id}/recipe`}>
-          <button type="button" className="btn btn-outline-success">
-            Get Recipe
-          </button>
-        </Link>
+      <div className="meal-details-button-container">
         <button
-          onClick={openModal}
+          onClick={openRecipeModal}
+          type="button"
+          className="btn btn-outline-success"
+        >
+          Get Recipe
+        </button>
+        <button
+          onClick={openNutritionModal}
           type="button"
           className="btn btn-outline-success"
         >
@@ -83,10 +94,15 @@ function MealDetails(props) {
         </button>
       </div>
 
-      <p dangerouslySetInnerHTML={{ __html: mealSummary.summary }} />
+      <div className="meal-description">
+        <p dangerouslySetInnerHTML={{ __html: mealSummary.summary }} />
+      </div>
 
       <div className="container">
         <div className="row">
+          <div className="col">
+            <img src={mealPicture} alt="mealpicture" />
+          </div>
           <div className="col">
             <table className="table table-striped table-light">
               <thead className="table-warning">
@@ -101,7 +117,7 @@ function MealDetails(props) {
                 {mealIngredients.map((ingredient, index) => {
                   return (
                     <tr>
-                      <th scope="row">{index}</th>
+                      <th scope="row">{index + 1}</th>
                       <td>{ingredient.name}</td>
                       <td>{ingredient.amount.metric.value} g</td>
                     </tr>
@@ -110,10 +126,6 @@ function MealDetails(props) {
               </tbody>
             </table>
           </div>
-
-          <div className="col">
-            <img src={mealPicture} alt="mealpicture" />
-          </div>
         </div>
       </div>
 
@@ -121,21 +133,28 @@ function MealDetails(props) {
         <Modal
           scrollable={true}
           isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={modalStyle}
           contentLabel="Nutrition Facts"
         >
-          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Nutrition Facts</h2>
-
-          <Nutrition mealId={id} />
+          {isRecipe ? (
+            <div>
+              <h2>Recipe</h2>
+              <Recipe mealId={id} />
+            </div>
+          ) : (
+            <div>
+              <h2>Nutrition Facts</h2>
+              <Nutrition mealId={id} />
+            </div>
+          )}
 
           <button
             onClick={closeModal}
             type="button"
             className="btn btn-primary"
           >
-            close
+            Close
           </button>
         </Modal>
       </div>
