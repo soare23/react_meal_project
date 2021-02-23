@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styling/Navbar.css';
 
 function Navbar(props) {
   return (
-    <div>
+    <div className="navbar">
       <ul className="nav justify-content-center">
         <li className="nav-item">
           <Link to={'/meals'} className="nav-link">
