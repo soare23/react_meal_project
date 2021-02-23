@@ -6,7 +6,6 @@ import Random from './components/RandomMeal';
 import Meals from './components/Meals';
 import MealDetails from './components/MealDetails';
 import WineDetails from './components/WineDetails';
-import Recipe from './components/Recipe';
 import Videos from './components/Video';
 import './App.css';
 
@@ -20,7 +19,6 @@ function App() {
         <Route exact path={'/wine'} component={Wine} />
         <Route exact path={'/meal/:id'} component={MealDetails} />
         <Route path={'/wine/:name'} component={WineDetails} />
-        <Route exact path={'/meal/:id/recipe'} component={Recipe} />
         <Route path={'/videos'} component={Videos} />
       </Router>
     </div>
