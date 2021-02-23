@@ -1,0 +1,14 @@
+.random-meal-container {
+  margin-top: 150px;
+}
+
+.text-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,39 @@
+.title-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.title-container h3 {
+  font-size: xx-large;
+}
+
+.meal-details-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.meal-details-button-container button {
+  margin: 5px;
+}
+
+.meal-description {
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.meal-description p {
+  width: 500px;
+  max-width: 100%;
+}
+
+img {
+  border-radius: 5px;
+  border: solid #f86458;
+  box-shadow: 0px 0px 40px 20px rgba(0, 0, 0, 0.2);
+}
+
+table {
+  height: 100%;
+}
