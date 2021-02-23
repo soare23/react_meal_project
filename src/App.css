@@ -1,3 +1,9 @@
+body,
+html {
+  background-color: #eef5db;
+}
+
 a {
   text-decoration: none;
+  color: #fe5f55;
 }
